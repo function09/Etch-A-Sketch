@@ -3,4 +3,5 @@
     height: 500px;
     display: flex;
     flex-wrap: wrap;
+    border: 1px solid rgb(206, 206, 206);
 }
