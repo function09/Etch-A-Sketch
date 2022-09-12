@@ -5,3 +5,18 @@
     flex-wrap: wrap;
     border: 1px solid rgb(206, 206, 206);
 }
+
+.grid1 {
+    width: 31.25px;
+    height: 31.25px;
+}
+
+.grid2 {
+    width: 15.625px;
+    height: 15.625px;
+}
+
+.grid3 {
+    width: 7.8125px;
+    height: 7.8125px;
+}
