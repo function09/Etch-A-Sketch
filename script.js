@@ -1,8 +1,4 @@
-const btn1 = document.querySelector('#btn1');
-
-const btn2 = document.querySelector('#btn2');
-
-const btn3 = document.querySelector('#btn3');
+const buttons = document.querySelector('#buttons');
 
 //Creates a grid with the size indicated by gridSize
 function createGrid (gridSize){
@@ -21,6 +17,7 @@ function clear(){
             container.removeChild(container.firstChild);
         };
 };
+
 // Allows 'drawing'
 function draw(gridSelect){
     const grids = document.querySelectorAll('#grid')    
@@ -32,30 +29,25 @@ function draw(gridSelect){
     });
 };
 
-btn1.addEventListener('click', () => {
+buttons.addEventListener('click', (e) =>{
+    
+    let target = e.target;
 
-    clear();
-    
-    createGrid(256);
-    
-    draw('grid1')
+    switch(target.id){
+        case 'btn1':
+            clear();
+            createGrid(256);
+            draw('grid1');
+            break;
+        case 'btn2':
+            clear();
+            createGrid(1024);
+            draw('grid2');
+            break;
+        case 'btn3':
+            clear();
+            createGrid(4096);
+            draw('grid3');
+            break;
+    };
 });
-
-btn2.addEventListener('click', () => {
-
-    clear();
-    
-    createGrid(1024);
-    
-    draw('grid2')
-});
-
-btn3.addEventListener('click', () => {
-
-    clear();
-    
-    createGrid(4096);
-    
-    draw('grid3')
-});
-
