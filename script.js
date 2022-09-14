@@ -2,12 +2,22 @@ const buttons = document.querySelector('#buttons');
 
 //Creates a grid with the size indicated by gridSize
 function createGrid (gridSize){
-    for(let i = 0; i < gridSize; i++){
+    for(let i = 0; i < gridSize**2; i++){
+        
         const container = document.querySelector('#container');
+
         const grid = document.createElement('div');
         grid.setAttribute('id', 'grid');
         container.appendChild(grid);
-         };
+        
+    };
+        const grids = document.querySelectorAll('#grid');
+
+        grids.forEach((e) => {
+            e.style.width = `${500/gridSize}px`;
+            e.style.height = `${500/gridSize}px`;
+        });   
+        
 };
 
 // Clears grid
@@ -18,13 +28,13 @@ function clear(){
         };
 };
 
-// Allows 'drawing'
-function draw(gridSelect){
-    const grids = document.querySelectorAll('#grid')    
+
+// Allows shading of squares
+function shade(){
+    const grids = document.querySelectorAll('#grid');    
     grids.forEach((grid) => {
-        grid.classList.add(gridSelect);
         grid.addEventListener('mouseover', (e) => {
-            e.target.style.cssText = 'background-color: black;'
+            e.target.style.backgroundColor = 'black';
         });
     });
 };
@@ -36,18 +46,13 @@ buttons.addEventListener('click', (e) =>{
     switch(target.id){
         case 'btn1':
             clear();
-            createGrid(256);
-            draw('grid1');
+            createGrid(10);
+            shade();
             break;
         case 'btn2':
             clear();
-            createGrid(1024);
-            draw('grid2');
-            break;
-        case 'btn3':
-            clear();
-            createGrid(4096);
-            draw('grid3');
             break;
     };
 });
+
+
