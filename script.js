@@ -1,8 +1,9 @@
 const buttons = document.querySelector('#buttons');
 
-//Creates a grid with the size indicated by gridSize
-function createGrid (gridSize){
-    for(let i = 0; i < gridSize**2; i++){
+//Creates a grid with the size indicated by dimensions
+function createGrid (dimensions){
+
+    for(let i = 0; i < dimensions**2; i++){
         
         const container = document.querySelector('#container');
 
@@ -14,11 +15,27 @@ function createGrid (gridSize){
         const grids = document.querySelectorAll('#grid');
 
         grids.forEach((e) => {
-            e.style.width = `${500/gridSize}px`;
-            e.style.height = `${500/gridSize}px`;
+            e.style.width = `${500/dimensions}px`;
+            e.style.height = `${500/dimensions}px`;
         });   
         
 };
+
+// Brings up a prompt that asks for a grid size 
+function popUp(size){
+    size = prompt ('Choose a grid size between 1 and 100', '0');
+
+        if(size > 0 && size < 101){
+            createGrid(size);
+        } 
+        else if(size > 100){
+            alert('Value cannot be greater than 100');
+        } 
+        else {
+            alert('Value must be greater than 0');
+        }
+};
+
 
 // Clears grid
 function clear(){
@@ -46,7 +63,7 @@ buttons.addEventListener('click', (e) =>{
     switch(target.id){
         case 'btn1':
             clear();
-            createGrid(10);
+            popUp();
             shade();
             break;
         case 'btn2':
