@@ -36,7 +36,6 @@ function popUp(size){
         }
 };
 
-
 // Clears grid
 function clear(){
     const container = document.querySelector('#container');
@@ -44,7 +43,6 @@ function clear(){
             container.removeChild(container.firstChild);
         };
 };
-
 
 // Allows full black shading of squares
 function draw(){
@@ -67,6 +65,7 @@ function colorMode(){
         }, {once:true});
     });
 };
+
 // Increases opacity after each grid
 function monochromeMode(){
     let darken = 0
@@ -78,8 +77,6 @@ function monochromeMode(){
         },{once:true});
     });
 };
-
- 
 
 buttons.addEventListener('click', (e) =>{
     
