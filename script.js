@@ -23,7 +23,7 @@ function createGrid (dimensions){
 
 // Brings up a prompt that asks for a grid size 
 function popUp(size){
-    size = prompt ('Choose a grid size between 1 and 100', '0');
+    size = prompt ('Choose a grid size between 1 and 100', '1');
 
         if(size > 0 && size < 101){
             createGrid(size);
@@ -70,6 +70,7 @@ function colorMode(){
 // Increases opacity after each grid
 function monochromeMode(){
     let darken = 0
+    
     const grids = document.querySelectorAll('#grid');    
     grids.forEach((grid) => {
         grid.addEventListener('mouseover', (e) => {
