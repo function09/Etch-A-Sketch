@@ -1,5 +1,4 @@
 const buttons = document.querySelector('#buttons');
-let color = Math.floor((Math.random()*16777216)).toString(16) // Generates random hexadecimal value
 
 //Creates a grid with the size indicated by dimensions
 function createGrid (dimensions){
@@ -68,9 +67,18 @@ function colorMode(){
         }, {once:true});
     });
 };
+// Increases opacity after each grid
+function monochromeMode(){
+    let darken = 0
+    const grids = document.querySelectorAll('#grid');    
+    grids.forEach((grid) => {
+        grid.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = `rgba(0,0,0,${darken += .1})`
+        },{once:true});
+    });
+};
 
-
-
+ 
 
 buttons.addEventListener('click', (e) =>{
     
@@ -89,6 +97,11 @@ buttons.addEventListener('click', (e) =>{
             clear();
             popUp();
             colorMode();
+            break;
+        case 'btn4':
+            clear();
+            popUp();
+            monochromeMode();
             break;
     };
 });
