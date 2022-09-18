@@ -1,4 +1,5 @@
 const buttons = document.querySelector('#buttons');
+let color = Math.floor((Math.random()*16777216)).toString(16) // Generates random hexadecimal value
 
 //Creates a grid with the size indicated by dimensions
 function createGrid (dimensions){
@@ -46,8 +47,8 @@ function clear(){
 };
 
 
-// Allows shading of squares
-function shade(){
+// Allows full black shading of squares
+function draw(){
     const grids = document.querySelectorAll('#grid');    
     grids.forEach((grid) => {
         grid.addEventListener('mouseover', (e) => {
@@ -55,6 +56,21 @@ function shade(){
         });
     });
 };
+
+// Uses hexadecimal values to generate a colorful grid 
+function colorMode(){
+    const hexValue = () => Math.floor((Math.random()*16777216)).toString(16)   
+   
+    const grids = document.querySelectorAll('#grid');    
+    grids.forEach((grid) => {
+        grid.addEventListener('mouseover', (e) => {
+            e.target.style.backgroundColor = '#' + hexValue()
+        }, {once:true});
+    });
+};
+
+
+
 
 buttons.addEventListener('click', (e) =>{
     
@@ -64,12 +80,15 @@ buttons.addEventListener('click', (e) =>{
         case 'btn1':
             clear();
             popUp();
-            shade();
+            draw()
             break;
         case 'btn2':
             clear();
             break;
+        case 'btn3':
+            clear();
+            popUp();
+            colorMode();
+            break;
     };
 });
-
-
